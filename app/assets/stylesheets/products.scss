@@ -79,8 +79,15 @@ main section.categories-show {
   margin-top: 20px;
   margin-left: 20px;
 
+  #panel-heading{
+    padding-bottom: 3px;
+  }
+
   #review_delete{
     float: right;
+  }
+  .star, .star-o{
+    color: #235580;
   }
 }
 #create_review{

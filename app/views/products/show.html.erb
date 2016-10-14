@@ -55,43 +55,40 @@
       </div>
 
       <div class="col-sm-12" id="reviews">
-        <% if @reviews != nil %>
-          <table class="table table-bordered">
-          <h2>User Reviews</h2>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @reviews.each do |review| %>
-                <tr>
-                  <td>
-                    <%= review.description %>
-                  </td>
-                  <td>
-                    <% review.rating.times do %>
-                      <%= fa_icon ('star') %>
-                    <% end %>
-                    <% if review.rating < 5 %>
-                      <% (5 - review.rating).times do %>
-                        <%= fa_icon('star-o') %>
-                      <% end %>
-                    <% end %>
+        <% if @product.review.length != 0 %>
 
-                  <% if @current_user.id === review.user_id %>
-                    <%= link_to fa_icon('trash'), [review], class: 'btn btn-sm btn-danger', id: 'review_delete', method: :delete, data: { confirm: "Are you sure?" } %>
+          <h2>User Reviews</h2>
+          <div class="panel panel-default">
+
+            <% @reviews.each do |review| %>
+
+              <div class="panel-heading">
+                <% review.rating.times do %>
+                  <%= fa_icon('star', class: 'star') %>
+                <% end %>
+
+                <% if review.rating < 5 %>
+                  <% (5 - review.rating).times do %>
+                    <%= fa_icon('star-o', class: 'star') %>
                   <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+                <% end %>
+
+                <% if @current_user.id === review.user_id %>
+                  <%= link_to fa_icon('trash'), [review], class: 'btn btn-sm btn-danger', id: 'review_delete', method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </div>
+
+              <div class="panel-body">
+                <p> <%= review.description %> </p>
+              </div>
+            <% end %>
+          </div>
+
         <% else %>
-        <p> No reviews yet! </p>
+          <h4> No reviews yet! </h4>
         <% end %>
       </div>
+
     </div>
 
   </article>
