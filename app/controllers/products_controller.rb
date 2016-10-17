@@ -12,6 +12,4 @@ class ProductsController < ApplicationController
     @reviews = Review.where(product_id: params[:id]).order(created_at: :desc)
   end
 
-  private
-
 end
