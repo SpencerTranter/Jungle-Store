@@ -40,7 +40,4 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-
-  secret_token: "my_secret_token"
-  secret_key_base: "abcdef0123456789"
 end
