@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to :back
     else
+      if
       puts @review.errors.to_a
     end
   end
